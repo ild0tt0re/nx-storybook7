@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cloudacademy/react-nextjs": ["libs/core/react-nextjs/src/index.ts"],
       "@cloudacademy/react-rollup": ["libs/core/react-rollup/src/index.ts"]
     }
   },
