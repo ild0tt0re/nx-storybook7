@@ -1,0 +1,51 @@
+{
+  "name": "core-react-rollup",
+  "sourceRoot": "libs/core/react-rollup/src",
+  "projectType": "library",
+  "tags": [
+    "react",
+    "rollup",
+    "swc",
+    "jest",
+    "publishable",
+    "directory",
+    "setParserOptionsProject"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/core/react-rollup/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/core/react-rollup",
+        "tsConfig": "libs/core/react-rollup/tsconfig.lib.json",
+        "project": "libs/core/react-rollup/package.json",
+        "entryFile": "libs/core/react-rollup/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "swc",
+        "assets": [
+          {
+            "glob": "libs/core/react-rollup/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/core/react-rollup/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
